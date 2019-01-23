@@ -1,24 +1,20 @@
 sudo: required
 services:
   - docker
-
 before_install:
-  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
+  - docker build -t naveen/react -f Dockerfile .
 
-script:
-  - docker run stephengrider/docker-react npm run test -- --coverage
-
+script: 
+  - docker run naveen/react run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
-  app: "Docker"
-  env: "Docker-env"
+  app: "docker"
+  env: "docker-env-1"
   bucket_name: "elasticbeanstalk-us-east-1-730942267492"
-  bucket_path: "Docker"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
-
+    secure: "AWS_SECRET_KEY"
