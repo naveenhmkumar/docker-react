@@ -1,5 +1,5 @@
 FROM node:alpine as builder
-MAINTAINER Naveen kuamr
+MAINTAINER Naveen kumar
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
